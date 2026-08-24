@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family:  serif;
+}
+input, button {
+  outline: none;
+  padding: 5px;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+}
+
+.row-element {
+  width: calc(100% + 12px);
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+}
+h3 {
+  width: 100%;
+}
+
+.app-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
+  min-height: 100vh;
+  h1 {
+    font-size: 150%;
+  }
+}
+.app-head {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  .app-action-options {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    display: none;
+    button {
+      text-align: left;
+      padding: 5px;
+      background-color: #f90;
+      color: rgba(0, 0, 0, 0.95);
+    }
+    button:first-child {
+      text-align: right;
+    }
+  }
+}
+
+.app-meta .search {
+  width: calc(100% - 20px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f90;
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 5px 10px;
+}
+.app-meta .search input {
+  flex-grow: 1;
+  padding: 5px 10px;
+  padding-left: 12.5px;
+}
+.app-meta .search button {
+  background-color: #f90;
+  padding: 5px 10px;
+  padding-right: 12.5px;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.list-body {
+  h2 {
+    padding: 5px 10px;
+    font-size: 125%;
+  } h3 {
+    padding: 5px 25px;
+    font-size: 100%;
+  }
+  .list-title {
+    margin-top: 20px;
+    background-color: #f90;
+    padding: 5px 10px;
+    color: rgba(0, 0, 0, 0.95);
+  }
+}
+
