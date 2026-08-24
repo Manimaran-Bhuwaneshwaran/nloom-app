@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import List from "../components/List";
 import axios from 'axios';
 
-const AppPage = () => {
+const Home = () => {
 
-  const [topics, setTopics] = useState([]);
+  const [topics, setTopics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,18 +13,13 @@ const AppPage = () => {
  useEffect(() => {
     const fetchTopics = async () => {
       try {
-        console.log("Start: calling API");
-        
         setLoading(true);
         const response = await axios.get('http://localhost:8080/api/topics');
         setTopics(response.data);
-        console.log("Success: calling API", response.data);
       } catch (err) {
-        console.log("Error: calling API", err.message);
         setError(err.message || 'Something went wrong');
       } finally {
         setLoading(false);
-        console.log("End: calling API");
       }
     };
 
@@ -53,9 +48,25 @@ const AppPage = () => {
           <button>🔍︎</button>
         </div>
       </div>
-      <List listTitle={TOPICS} listItems={topics} view={TOPICS}></List>
+      {
+        !loading && 
+        error != null ? 
+          topics != null ?
+          <List listTitle={TOPICS} listItems={topics} view={TOPICS}></List>
+          :
+          <div className="error">
+          <p>Something went wrong. It's not you, It's us. Try after sometime</p>
+        </div>
+        :
+        topics != null ?
+        <List listTitle={TOPICS} listItems={topics} view={TOPICS}></List>
+        :
+        <div className="warning">
+          <p>No topics found!. add new topics and get started!</p>
+        </div>
+      }
     </div>
   );
 };
 
-export default AppPage;
+export default Home;

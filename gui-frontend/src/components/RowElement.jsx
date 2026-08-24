@@ -1,7 +1,18 @@
-const RowElement = ({type, content, id}) => {
+import { Link } from "react-router-dom";
+
+const RowElement = ({type, content, id, misc}) => {
+  const topic = {topicName: content, topicId: id};
+  const subTopic = {subTopicName: content, subTopicId: id, topicName: misc};
+  
   return (
     <div className="row-element row element">
-      <h3 id= {type+ "-" +id} className={type}> ⤷ {content}</h3>
+      {type == "Topics" && <Link to="/subTittle" state={topic}>
+        <h3 id= {type+ "-" +id} className={type}> ⤷ {content}</h3>
+      </Link>}
+      {type == "SubTopics" && <Link to="/notes" state={subTopic}>
+        <h3 id= {type+ "-" +id} className={type}> ⤷ {content}</h3>
+      </Link>}
+      
     </div>
   );
 };
