@@ -52,14 +52,14 @@ const Home = () => {
         !loading && 
         error != null ? 
           topics != null ?
-          <List listTitle={TOPICS} listItems={topics} view={TOPICS}></List>
+          <List listTitle={TOPICS} items={topics} view={TOPICS}  topic=""></List>
           :
           <div className="error">
           <p>Something went wrong. It's not you, It's us. Try after sometime</p>
         </div>
         :
         topics != null ?
-        <List listTitle={TOPICS} listItems={topics} view={TOPICS}></List>
+        <List listTitle={TOPICS} items={topics} view={TOPICS}  topic=""></List>
         :
         <div className="warning">
           <p>No topics found!. add new topics and get started!</p>

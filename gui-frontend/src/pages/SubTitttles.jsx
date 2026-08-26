@@ -36,7 +36,7 @@ const SubTitttles = () => {
 
     return (
         <div className="app-container">
-            {!loading && <List listTitle={topicName} listItems={subTopics} view={SUB_TOPICS}></List>}
+            {!loading && <List listTitle={topicName} items={subTopics} view={SUB_TOPICS} topic={topicId}></List>}
             
         </div>
     );
