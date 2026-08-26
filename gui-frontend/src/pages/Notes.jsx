@@ -5,6 +5,8 @@ import Markdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github-dark.css'; // Choose your preferred theme
 import { formatIsoDate } from '../utils/dateUtils';
+import {BASE_URL} from '../constants/constants';
+
 
 
 const Notes = () => {
@@ -63,7 +65,7 @@ const Notes = () => {
                 "updatedAt":  Date.now()
             }
         }
-        await axios.post("http://localhost:8080/api/notes", payload)
+        await axios.post(BASE_URL + "/api/notes", payload)
         .then((res)=>{
             setHasMessage(true);
             setStatusMessage(editNoteId.length != 0? 
@@ -106,7 +108,7 @@ const Notes = () => {
             console.log("start");
             
             setLoading(true);
-            const response = await axios.get('http://localhost:8080/api/notes/subTopic/' + subTopicId);
+            const response = await axios.get(BASE_URL + "/api/notes/subTopic/" + subTopicId);
             setnotes(response.data);
             console.log("success", response.data);
         } catch (err) {

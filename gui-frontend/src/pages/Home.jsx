@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import List from "../components/List";
 import axios from 'axios';
+import {BASE_URL} from '../constants/constants';
 
 const Home = () => {
 
@@ -14,7 +15,7 @@ const Home = () => {
     const fetchTopics = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:8080/api/topics');
+        const response = await axios.get(BASE_URL + "/api/topics");
         setTopics(response.data);
       } catch (err) {
         setError(err.message || 'Something went wrong');

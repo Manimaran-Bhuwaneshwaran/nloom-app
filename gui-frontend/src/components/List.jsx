@@ -2,6 +2,8 @@
 import RowElment from "./RowElement";
 import { useState } from "react";
 import axios from "axios";
+import {BASE_URL} from '../constants/constants';
+
 const List = ({listTitle, items, view, topic})=>{
     const [listItems, setListItems] = useState(items);
     const [showInput, setShowInput] = useState(false);
@@ -46,7 +48,7 @@ const List = ({listTitle, items, view, topic})=>{
           "createdAt":Date.now(),
           "updatedAt":Date.now()
         }
-      await axios.post("http://localhost:8080/api/topics", newTopic)
+      await axios.post(BASE_URL + "/api/topics", newTopic)
       .then((res)=>{
         console.log('new topic added!', res);
         setHasMessage(true);
@@ -71,7 +73,7 @@ const List = ({listTitle, items, view, topic})=>{
           "createdAt":Date.now(),
           "updatedAt":Date.now()
         }
-      await axios.post("http://localhost:8080/api/subtopics", newSubTopic)
+      await axios.post(BASE_URL + "/api/subtopics", newSubTopic)
       .then((res)=>{
         console.log('new subtopic added!', res);
         setHasMessage(true);

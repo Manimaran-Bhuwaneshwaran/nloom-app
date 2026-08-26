@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import List from "../components/List";
 import axios from 'axios';
+import {BASE_URL} from '../constants/constants';
+
 
 import { useLocation } from 'react-router-dom';
 
@@ -19,7 +21,7 @@ const SubTitttles = () => {
         console.log("Start: calling API", topicId, topicName);
         
         setLoading(true);
-        const response = await axios.get('http://localhost:8080/api/subtopics/topic/' + topicId);
+        const response = await axios.get(BASE_URL + "/api/subtopics/topic/" + topicId);
         setSubTopics(response.data);
         console.log("Success: calling API", response.data);
       } catch (err) {
